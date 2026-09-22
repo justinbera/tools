@@ -1,0 +1,3 @@
+import { NextResponse } from "next/server";
+import { AuthorizationError, requireCapability } from "@/lib/auth/authorization";
+export async function GET() { try { const { supabase } = await requireCapability("sites.view"); const { data, error } = await supabase.from("sites").select("id,master_account_id,name,timezone,status").order("name"); if (error) throw error; return NextResponse.json({ data }); } catch (error) { const status = error instanceof AuthorizationError ? error.status : 500; return NextResponse.json({ error: status===500?"Unable to load sites":(error as Error).message }, { status }); } }
