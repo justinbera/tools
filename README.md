@@ -10,4 +10,6 @@ Security-first marina management SaaS. This repository currently implements the 
 
 Verification: `npm test` runs dependency-free pricing/billing unit tests. `npm run test:db` probes RLS against a seeded database via `DATABASE_URL`.
 
+When package installation is unavailable, `npm run preview` starts a dependency-free browser preview of the account dashboard on `http://localhost:3000`. This preview uses demonstration data and does not replace the authenticated Next.js runtime.
+
 Read [architecture and security decisions](docs/ARCHITECTURE.md) and the [durable requirements/progress record](docs/REQUIREMENTS.md) before extending the product. All external integrations are sandbox-only until explicitly verified.
